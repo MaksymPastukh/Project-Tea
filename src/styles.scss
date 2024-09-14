@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: Arial;
+  src: url("assets/fonts/ArialReg.ttf");
+}
+
+
+@font-face {
+  font-family: Arial;
+  src: url("assets/fonts/Arial-Bold.ttf");
+  font-weight: 700;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.accordion-icon {
+  transition: transform 0.3s ease;
+}
+.rotate {
+  transform: rotate(180deg);
+}
+
+.ui-widget-content {
+  border: none;
+}
+
+.ui-helper-reset {
+  margin: 0;
+  padding: 0;
+}
+
+.card-body p span{
+  white-space: pre;
+}
+
+
+h3 svg {
+  position: absolute;
+  right: 30px;
+}

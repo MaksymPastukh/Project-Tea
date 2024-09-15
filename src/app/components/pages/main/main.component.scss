@@ -1,0 +1,35 @@
+.popup-catalog {
+  width: 100%;
+  min-height: 100%;
+  background-color: rgba(0, 0, 0, 0.64);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+
+  &.show {
+    display: block;
+  }
+
+  &.hide {
+    display: none;
+  }
+
+
+  .popup {
+    border: none;
+    outline: none;
+    margin: 140px auto 0 auto;
+    max-width: 500px;
+    height: 100%;
+    padding: 40px;
+    font-size: 19px;
+    background-color: rgba(13, 110, 253, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    text-align: center;
+    z-index: 10;
+    position: relative;
+  }
+}

@@ -7,7 +7,11 @@ import { HeaderComponent } from './components/common/header/header.component';
 import { MainComponent } from './components/pages/main/main.component';
 import { OrderComponent } from './components/pages/order/order.component';
 import { FooterComponent } from './components/common/footer/footer.component';
-import { ProductComponent } from './components/pages/product/product.component';
+import { CatalogComponent } from './components/pages/catalog/catalog.component';
+import { ProductItemsComponent } from './components/component/product-items/product-items.component';
+import { ProductItemComponent } from './components/component/product-item/product-item.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import { ProductComponent } from './components/pages/product/product.component';
     MainComponent,
     OrderComponent,
     FooterComponent,
-    ProductComponent
+    CatalogComponent,
+    ProductItemsComponent,
+    ProductItemComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+<div class="card h-100">
+    <a class="popup-link" *ngIf="product.image" href="#">
+      <img src="{{product.image}}" class="card-img-top" alt="{{product.title}}">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title text-dark fw-bold">{{product.title}}</h5>
+      <p class="card-text">{{product.description}}</p>
+      <p class="card-text">{{product.price}}</p>
+      <a href="#" class="btn btn-primary col-sm-8 col-xl-6 mx-start">Learn more</a>
+    </div>
+  </div>

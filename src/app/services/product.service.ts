@@ -11,8 +11,12 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  getProduct(): Observable<ProductType[]> {
+  getProducts(): Observable<ProductType[]> {
     return this.http.get<ProductType[]>(`https://testologia.ru/tea`)
+  }
+
+  getProduct(id: number): Observable<ProductType> {
+    return this.http.get<ProductType>(`https://testologia.ru/tea?id=${id}`)
   }
 
 }

@@ -17,7 +17,7 @@ export class CatalogComponent implements OnInit,OnDestroy {
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-   this.subscription = this.productService.getProduct()
+   this.subscription = this.productService.getProducts()
       .subscribe({
         next: (productItem) => {
           this.products = productItem

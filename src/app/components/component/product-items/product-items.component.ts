@@ -2,12 +2,13 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductType} from "../../../types/product.type";
 
 @Component({
-  selector: 'product-items',
+  selector: 'products',
   templateUrl: './product-items.component.html',
   styleUrls: ['./product-items.component.scss']
 })
 export class ProductItemsComponent implements OnInit {
   @Input() product: ProductType
+  @Input() text: string = ''
 
   constructor() {
     this.product = {
@@ -19,6 +20,7 @@ export class ProductItemsComponent implements OnInit {
     }
 
   }
+
 
   ngOnInit(): void {
   }

@@ -1,0 +1,93 @@
+.faq {
+  margin: 0 0 29rem 0;
+  position: relative;
+
+  .container {
+    h2 {
+      margin-bottom: 6.1rem;
+    }
+
+    .faq-accordion {
+      margin: 0 auto;
+      width: 864px;
+      height: 67px;
+
+
+      .accordion {
+
+        .accordion-item {
+          position: relative;
+          z-index: 1;
+          border: 1px solid #0d6efd;
+          background-color: #0d6efd;
+          border-radius: 1rem;
+          margin-bottom: 1rem;
+
+          .accordion-item-trigger {
+            display: flex;
+            padding: 1.5rem 1rem;
+            align-items: center;
+            cursor: pointer;
+
+            .trigger-text {
+              font-style: normal;
+              font-family: "Montserrat-Bold", sans-serif;
+              font-weight: bold;
+              font-size: 16px;
+            }
+
+            .trigger-img {
+              position: relative;
+              margin-left: auto;
+
+              svg {
+                fill: white;
+              }
+            }
+          }
+
+          .accordion-item-content {
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+
+            .content-text {
+              margin: 3rem 3.8rem;
+              font-size: 16px;
+              font-family: "Montserrat", sans-serif;
+              line-height: 1.313;
+            }
+          }
+
+          &.accordion-item-active {
+            .accordion-item-content {
+              display: block;
+              border-top: .1rem solid yellow;
+              animation: fadeInUp 1.3s ease;
+              transition: all 1s ease;
+            }
+
+            .trigger-img {
+              img {
+                transform: rotate(180deg) !important;
+                transition: .5s transform ease;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0,40px,0)
+  }
+
+  to {
+    transform: translate3d(0,0,0);
+    opacity: 1
+  }
+}

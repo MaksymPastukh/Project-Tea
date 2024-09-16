@@ -14,6 +14,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StringLimitPipe } from './pipes/string-limit.pipe';
 import localeRu from '@angular/common/locales/ru'
 import {registerLocaleData} from "@angular/common";
+import { FaqComponent } from './components/component/faq/faq.component';
 
 registerLocaleData(localeRu)
 
@@ -28,6 +29,7 @@ registerLocaleData(localeRu)
     ProductItemsComponent,
     ProductItemComponent,
     StringLimitPipe,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,

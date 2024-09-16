@@ -4,7 +4,7 @@
     <h5 class="card-title text-dark text-uppercase fw-bold">{{product.title}}</h5>
     <p class="card-text mt-md-5 fw-medium">{{product.description}}</p>
     <div class="d-flex mt-md-5 align-items-center justify-content-between">
-      <a href="#" class="btn btn-primary col-sm-8 col-xl-6 mx-start">Купить</a>
+      <a routerLink="/order" [queryParams]="{product : product.title}" class="btn btn-primary col-sm-8 col-xl-6 mx-start">Купить</a>
       <p class="card-text">Цена: {{product.price | currency: 'RU':'руб'}}</p>
     </div>
   </div>

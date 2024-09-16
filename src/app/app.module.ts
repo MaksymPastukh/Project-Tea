@@ -1,6 +1,5 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/common/header/header.component';
@@ -11,9 +10,8 @@ import { CatalogComponent } from './components/pages/catalog/catalog.component';
 import { ProductItemsComponent } from './components/component/product-items/product-items.component';
 import { ProductItemComponent } from './components/component/product-item/product-item.component';
 import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StringLimitPipe } from './pipes/string-limit.pipe';
-
 import localeRu from '@angular/common/locales/ru'
 import {registerLocaleData} from "@angular/common";
 
@@ -35,7 +33,8 @@ registerLocaleData(localeRu)
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: LOCALE_ID, useValue: 'ru'

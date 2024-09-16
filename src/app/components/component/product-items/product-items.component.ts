@@ -8,7 +8,6 @@ import {ProductType} from "../../../types/product.type";
 })
 export class ProductItemsComponent implements OnInit {
   @Input() product: ProductType
-  @Input() text: string = ''
 
   constructor() {
     this.product = {
@@ -18,11 +17,8 @@ export class ProductItemsComponent implements OnInit {
       price: '',
       description: ''
     }
-
   }
-
 
   ngOnInit(): void {
   }
-
 }

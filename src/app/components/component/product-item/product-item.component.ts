@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductType} from "../../../types/product.type";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../services/product.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'product',
@@ -9,7 +10,7 @@ import {ProductService} from "../../../services/product.service";
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit, OnDestroy {
-
+  private subscription: Subscription | null = null
   product: ProductType
 
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private route: Router) {
@@ -23,15 +24,15 @@ export class ProductItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.activeRoute.params.subscribe((value) => {
+  this.subscription = this.activeRoute.params.subscribe((value) => {
       if (value['id']) {
         this.productService.getProduct(+value['id'])
           .subscribe({
-            next: product => {
+            next: (product: ProductType) => {
               this.product = product
             },
             error: () => {
-              console.log('no')
+              this.route.navigate(['/'])
             }
           })
       }
@@ -39,6 +40,6 @@ export class ProductItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.subscription?.unsubscribe()
   }
-
 }

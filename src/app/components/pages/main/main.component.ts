@@ -17,7 +17,7 @@ export class MainComponent implements OnInit, OnDestroy, AfterViewInit {
     this.popupTimeInference = new Observable((observer) => {
       const timeOut = setTimeout(() => {
         observer.next(this.popup = true)
-      }, 10000)
+      }, 100000)
 
       return {
         unsubscribe() {

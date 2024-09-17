@@ -1,0 +1,12 @@
+header {
+  position: relative;
+
+  .search-block {
+    width: 222px;
+    height: 67px;
+    position: absolute;
+    top: 50px;
+    right: 90px;
+    z-index: 10;
+  }
+}

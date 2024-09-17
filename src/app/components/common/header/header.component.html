@@ -18,9 +18,27 @@
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Введи название чая" aria-label="Search">
-          <button class="btn btn-primary text-white" type="submit">Поиск</button>
+          <input class="form-control me-2 search-input" type="search" placeholder="Введи название чая"
+                 aria-label="Search" #filters>
+          <button class="btn btn-primary text-white" type="submit" (click)="filterResult(filters.value)">Поиск</button>
+          <div *ngFor="let product of filterProductSearch"></div>
         </form>
+
+        <div class="search-block" *ngIf="search">
+          <div *ngIf="searchArr.length > 0" class="row ">
+            <div *ngFor="let product of searchArr" class="">
+              <div class="card p-2 mb-1">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <a href="#" [routerLink]='["/product", product.id]' (click)="clearInputSearch(product)"
+                   class="btn btn-outline-primary">Подробнее</a>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="searchArr.length === 0" class="alert alert-warning" role="alert">
+            Ничего не найдено по вашему запросу!
+          </div>
+        </div>
       </div>
     </div>
   </nav>

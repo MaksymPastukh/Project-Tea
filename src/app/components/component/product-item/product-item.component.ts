@@ -37,6 +37,7 @@ export class ProductItemComponent implements OnInit, OnDestroy {
           .subscribe({
             next: (product: ProductType) => {
               this.product = product
+              console.log(this.product)
             },
             error: () => {
               this.route.navigate(['/'])
@@ -44,6 +45,7 @@ export class ProductItemComponent implements OnInit, OnDestroy {
           })
       }
     })
+
   }
 
   ngOnDestroy() {

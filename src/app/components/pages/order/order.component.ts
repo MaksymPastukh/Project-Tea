@@ -42,7 +42,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   createOrder() {
-    this.condition = true
+
     if (!this.reactForm.get('name')?.value) {
       alert('Введите имя!');
       return;
@@ -72,7 +72,7 @@ export class OrderComponent implements OnInit, OnDestroy {
       alert('Некоторые поля формы заполнены неправильно!');
       return;
     }
-
+    this.condition = true
     const elementFromHide = this.el.nativeElement.querySelector('.form-order')
     const elementFromShow = this.el.nativeElement.querySelector('.form-order-success')
     const submitError = this.el.nativeElement.querySelector('.submit-error')

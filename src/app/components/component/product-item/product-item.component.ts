@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductType} from "../../../types/product.type";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../services/product.service";
-import {Subscription} from "rxjs";
+import {Subscription, tap} from "rxjs";
 
 @Component({
   selector: 'product',
@@ -11,7 +11,8 @@ import {Subscription} from "rxjs";
 })
 export class ProductItemComponent implements OnInit, OnDestroy {
   private subscription: Subscription | null = null
-  product: ProductType
+  public product: ProductType
+  public loader: boolean = false
 
   constructor(private activeRoute: ActivatedRoute, private productService: ProductService, private route: Router) {
     this.product = {
@@ -24,9 +25,15 @@ export class ProductItemComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-  this.subscription = this.activeRoute.params.subscribe((value) => {
+    this.loader = true
+    this.subscription = this.activeRoute.params.subscribe((value) => {
       if (value['id']) {
         this.productService.getProduct(+value['id'])
+          .pipe(
+            tap(() => {
+              this.loader = false
+            })
+          )
           .subscribe({
             next: (product: ProductType) => {
               this.product = product

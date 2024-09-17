@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderService} from "../../../services/order.service";
 import {OrderType} from "../../../types/order.type";
-import {Subscription} from "rxjs";
+import {Subscription, tap} from "rxjs";
 
 @Component({
   selector: 'order-component',
@@ -11,16 +11,17 @@ import {Subscription} from "rxjs";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit, OnDestroy {
-  private subscription! : Subscription | null
-  private subscriptionOrder! : Subscription | null
+  private subscription!: Subscription | null
+  private subscriptionOrder!: Subscription | null
+  public condition = false
 
-  constructor(private activeRoute: ActivatedRoute, private route: Router, private fb: FormBuilder, private orderServices: OrderService) {
+  constructor(private el: ElementRef, private activeRoute: ActivatedRoute, private route: Router, private fb: FormBuilder, private orderServices: OrderService) {
   }
 
   reactForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.pattern('^[а-яА-ЯёЁa-zA-Z]+$')]],
     last_name: ['', [Validators.required, Validators.pattern('^[а-яА-ЯёЁa-zA-Z]+$')]],
-    phone: ['', [Validators.required, Validators.pattern('^\\+\\d{11}$')]],
+    phone: ['', [Validators.required, Validators.pattern('^\\+?\\d{11}$')]],
     country: ['', [Validators.required, Validators.pattern('^[а-яА-Яa-zA-Z0-9 \\-\\/]+$')]],
     zip: ['', [Validators.required, Validators.pattern('^\\d{5}$')]],
     product: ['', Validators.required],
@@ -41,6 +42,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   createOrder() {
+    this.condition = true
     if (!this.reactForm.get('name')?.value) {
       alert('Введите имя!');
       return;
@@ -71,19 +73,32 @@ export class OrderComponent implements OnInit, OnDestroy {
       return;
     }
 
+    const elementFromHide = this.el.nativeElement.querySelector('.form-order')
+    const elementFromShow = this.el.nativeElement.querySelector('.form-order-success')
+    const submitError = this.el.nativeElement.querySelector('.submit-error')
+
     this.subscriptionOrder = this.orderServices.createOrderServices(this.reactForm.value)
+      .pipe(
+        tap(() => {
+          this.condition = false
+        })
+      )
       .subscribe({
         next: (response: OrderType) => {
           if (response.success && !response.message) {
-            alert('Спасибо за заказ')
+            elementFromHide.style.display = 'none'
+            elementFromShow.style.display = 'block'
             setTimeout(() => {
               this.route.navigate(['/'])
               this.reactForm.reset()
-            }, 2000)
+            }, 3000)
           }
         },
         error: () => {
-          this.route.navigate(['/'])
+          submitError.style.display = 'block'
+          setTimeout(() => {
+            submitError.style.display = 'none'
+          }, 3000)
         }
       })
   }

@@ -1,8 +1,30 @@
-input.ng-invalid.ng-dirty,
-input.ng-invalid.ng-touched {
-  border-color: red;
+.container {
+  position: relative;
+
+  .form-order {
+    input.ng-invalid.ng-dirty,
+    input.ng-invalid.ng-touched {
+      border-color: red;
+    }
+
+    .invalid-feedback {
+      display: block !important;
+
+    }
+
+    .submit-error {
+      display: none;
+      color: red;
+      position: absolute;
+      bottom: 150px;
+    }
+  }
+
+  .form-order-success {
+    display: none;
+  }
+
 }
 
-.invalid-feedback {
-  display: block!important;
-}
+
+

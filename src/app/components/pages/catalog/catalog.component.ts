@@ -2,28 +2,35 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductType} from "../../../types/product.type";
 import {ProductService} from "../../../services/product.service";
 import {Router} from "@angular/router";
-import {Subscription} from "rxjs";
+import {Subscription, tap} from "rxjs";
 
 @Component({
   selector: 'catalog-component',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss']
 })
-export class CatalogComponent implements OnInit,OnDestroy {
+export class CatalogComponent implements OnInit, OnDestroy {
 
-  products: ProductType[] = []
+  public products: ProductType[] = []
   private subscription: Subscription | null = null
+  public loader: boolean = false
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router) {
+  }
 
   ngOnInit(): void {
-   this.subscription = this.productService.getProducts()
+    this.loader = true
+    this.subscription = this.productService.getProducts()
+      .pipe(
+        tap(() => {
+          this.loader = false
+        })
+      )
       .subscribe({
-        next: (productItem) => {
+        next: (productItem:ProductType[]) => {
           this.products = productItem
         },
-        error: (error) => {
-          console.log(error)
+        error: () => {
           this.router.navigate(['/'])
         }
       })

@@ -1,82 +1,88 @@
 <section class="container d-flex flex-column align-items-center justify-content-center min-vh-100 d-inline-block">
-  <h2 class="text-dark text-center mb-5 fw-bold">Оформление заказа</h2>
-  <div class="d-flex justify-content-center">
-    <form id="orderForm" class="align-self-center" [formGroup]="reactForm">
-      <div class="row mb-2">
-        <div class="col-md-6 col-sm-12 ">
-          <label for="country" class="form-label">Название продукта</label>
-          <input type="text"
-                 formControlName="product"
-                 class="form-control"
-                 id="product"
-                 readonly>
-          <div class="invalid-feedback" *ngIf="reactForm.get('product')?.invalid &&
+  <div class="form-order">
+    <h2 class="text-dark text-center mb-5 fw-bold">Оформление заказа</h2>
+    <div class="d-flex justify-content-center">
+      <form id="orderForm" class="align-self-center" [formGroup]="reactForm">
+        <div class="row mb-2">
+          <div class="col-md-6 col-sm-12 ">
+            <label for="country" class="form-label">Название продукта</label>
+            <input type="text"
+                   formControlName="product"
+                   class="form-control"
+                   id="product"
+                   readonly>
+            <div class="invalid-feedback" *ngIf="reactForm.get('product')?.invalid &&
                     (reactForm.get('product')?.touched || reactForm.get('product')?.dirty)
-                      && reactForm.get('product')?.errors?.['required']">Требуется ввести название продукта.
+                      && reactForm.get('product')?.errors?.['required']">Введите название продукта.
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 ">
+            <label for="index" class="form-label">Комментарий</label>
+            <input class="form-control" formControlName="comment" id="comment">
           </div>
         </div>
-        <div class="col-md-6 col-sm-12 ">
-          <label for="index" class="form-label">Комментарий</label>
-          <input class="form-control" formControlName="comment" id="comment">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col-md-4 col-sm-12 ">
-          <label for="name" class="form-label">Имя</label>
-          <input type="text" class="form-control" formControlName="name" id="name">
-          <div class="invalid-feedback" *ngIf="reactForm.get('name')?.invalid &&
+        <div class="row mb-2">
+          <div class="col-md-4 col-sm-12 ">
+            <label for="name" class="form-label">Имя</label>
+            <input type="text" class="form-control" formControlName="name" id="name">
+            <div class="invalid-feedback" *ngIf="reactForm.get('name')?.invalid &&
                     (reactForm.get('name')?.touched || reactForm.get('name')?.dirty)
-                      && reactForm.get('name')?.errors?.['required']">Требуется ввести имя.
+                      && reactForm.get('name')?.errors?.['required']">Введите имя.
+            </div>
           </div>
-        </div>
-        <div class="col-md-4 col-sm-12 ">
-          <label for="lastName" class="form-label">Фамилия</label>
-          <input type="text" class="form-control" formControlName="last_name" id="lastName">
-          <div class="invalid-feedback" *ngIf="reactForm.get('last_name')?.invalid &&
+          <div class="col-md-4 col-sm-12 ">
+            <label for="lastName" class="form-label">Фамилия</label>
+            <input type="text" class="form-control" formControlName="last_name" id="lastName">
+            <div class="invalid-feedback" *ngIf="reactForm.get('last_name')?.invalid &&
                     (reactForm.get('last_name')?.touched || reactForm.get('last_name')?.dirty)
-                      && reactForm.get('last_name')?.errors?.['required']">Требуется ввести фамилию.
+                      && reactForm.get('last_name')?.errors?.['required']">Введите фамилию.
+            </div>
           </div>
-        </div>
-        <div class="col-md-4 col-sm-12 ">
-          <label for="phone" class="form-label">Телефон</label>
-          <input type="text" class="form-control" formControlName="phone" id="phone">
-          <div class="invalid-feedback" *ngIf="reactForm.get('phone')?.invalid &&
+          <div class="col-md-4 col-sm-12 ">
+            <label for="phone" class="form-label">Телефон</label>
+            <input type="text" class="form-control" formControlName="phone" id="phone">
+            <div class="invalid-feedback" *ngIf="reactForm.get('phone')?.invalid &&
                     (reactForm.get('phone')?.touched || reactForm.get('phone')?.dirty)
-                      && reactForm.get('phone')?.errors?.['required']">Требуется ввести номер телефона.
+                      && reactForm.get('phone')?.errors?.['required']">Введите номер телефона.
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row mb-2">
-        <div class="col-md-6 col-sm-12 ">
-          <label for="country" class="form-label">Страна</label>
-          <input type="text" class="form-control" formControlName="country" id="country">
-          <div class="invalid-feedback" *ngIf="reactForm.get('country')?.invalid &&
+        <div class="row mb-2">
+          <div class="col-md-6 col-sm-12 ">
+            <label for="country" class="form-label">Страна</label>
+            <input type="text" class="form-control" formControlName="country" id="country">
+            <div class="invalid-feedback" *ngIf="reactForm.get('country')?.invalid &&
                     (reactForm.get('country')?.touched || reactForm.get('country')?.dirty)
-                      && reactForm.get('country')?.errors?.['required']">Требуется ввести страну.
+                      && reactForm.get('country')?.errors?.['required']">Введите страну.
+            </div>
           </div>
-        </div>
-        <div class="col-md-6 col-sm-12 ">
-          <label for="index" class="form-label">Индекс</label>
-          <input class="form-control" formControlName="zip" id="index">
-          <div class="invalid-feedback" *ngIf="reactForm.get('zip')?.invalid &&
+          <div class="col-md-6 col-sm-12 ">
+            <label for="index" class="form-label">Индекс</label>
+            <input class="form-control" formControlName="zip" id="index">
+            <div class="invalid-feedback" *ngIf="reactForm.get('zip')?.invalid &&
                     (reactForm.get('zip')?.touched || reactForm.get('zip')?.dirty)
-                      && reactForm.get('zip')?.errors?.['required']">Требуется ввести индекс.
+                      && reactForm.get('zip')?.errors?.['required']">Введите индекс.
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12 col-sm-12 ">
-          <label for="address" class="form-label">Адрес:</label>
-          <input type="text" class="form-control" formControlName="address" id="address">
-          <div class="invalid-feedback" *ngIf="reactForm.get('address')?.invalid &&
+        <div class="row">
+          <div class="col-md-12 col-sm-12 ">
+            <label for="address" class="form-label">Адрес:</label>
+            <input type="text" class="form-control" formControlName="address" id="address">
+            <div class="invalid-feedback" *ngIf="reactForm.get('address')?.invalid &&
                     (reactForm.get('address')?.touched || reactForm.get('address')?.dirty)
-                      && reactForm.get('address')?.errors?.['required']">Требуется ввести адрес.
+                      && reactForm.get('address')?.errors?.['required']">Введите адрес.
+            </div>
           </div>
         </div>
-      </div>
-      <button type="submit" (click)="createOrder()" class="btn btn-primary mt-3 col-md-3 col-sm-6 ">Отправить</button>
-    </form>
+        <button type="submit" (click)="createOrder()" [disabled]="condition" class="btn btn-primary mt-3 col-md-3 col-sm-6 ">Отправить</button>
+        <div class="submit-error mt-3 fw-bold">Произошла ошибка. Попробуйте еще раз.</div>
+      </form>
+    </div>
+  </div>
+  <div class="form-order-success">
+    <h1 class="text-dark text-center mb-5 fw-bold">«Спасибо за заказ!»</h1>
   </div>
 </section>

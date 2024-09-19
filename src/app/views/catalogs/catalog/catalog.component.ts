@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductType} from "../../../types/product.type";
-import {ProductService} from "../../../services/product.service";
 import {Router} from "@angular/router";
 import {Subscription, tap} from "rxjs";
+import {ProductType} from "../../../../types/product.type";
+import {ProductService} from "../../../shared/services/product.service";
 
 @Component({
-  selector: 'catalog-component',
+  selector: 'catalogs-component',
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss']
 })

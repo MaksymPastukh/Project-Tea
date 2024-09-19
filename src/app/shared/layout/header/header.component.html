@@ -28,8 +28,8 @@
           <div *ngIf="searchArr.length > 0" class="row ">
             <div *ngFor="let product of searchArr" class="">
               <div class="card p-2 mb-1">
-                <h5 class="card-title">{{ product.title }}</h5>
-                <a href="#" [routerLink]='["/product", product.id]' (click)="clearInputSearch(product)"
+                <h5 class="card-title text-small text-center">{{ product.title }}</h5>
+                <a href="#" [routerLink]='["/products", product.id]' (click)="clearInputSearch(product)"
                    class="btn btn-outline-primary">Подробнее</a>
               </div>
             </div>

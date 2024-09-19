@@ -6,7 +6,7 @@
     <h5 class="card-title text-dark fw-bold">{{ product.title }}</h5>
     <p class="card-text">{{ product.description | stringLimit : 200 }}</p>
     <div class="d-flex align-items-center justify-content-between">
-      <a [routerLink]="['/product', product.id]" class="btn btn-primary col-sm-8 col-xl-6 mx-start">Подробнее</a>
+      <a [routerLink]="['/products', product.id]" class="btn btn-primary col-sm-8 col-xl-6 mx-start">Подробнее</a>
     </div>
   </div>
 </div>

@@ -35,7 +35,7 @@ export class MainComponent implements OnInit, OnDestroy, AfterViewInit {
     if(this.popupElement) {
       this.renderer.listen(this.popupElement.nativeElement, 'click', (event: MouseEvent) => {
         const target = event.target as HTMLElement
-        if (target && target.classList.contains('popup-catalog')) {
+        if (target && target.classList.contains('popup-catalogs')) {
           this.popup = false
         }
       })

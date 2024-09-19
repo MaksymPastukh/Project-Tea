@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductType} from "../../../types/product.type";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProductService} from "../../../services/product.service";
 import {Subscription, tap} from "rxjs";
+import {ProductType} from "../../../../types/product.type";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'product',
@@ -37,7 +37,6 @@ export class ProductItemComponent implements OnInit, OnDestroy {
           .subscribe({
             next: (product: ProductType) => {
               this.product = product
-              console.log(this.product)
             },
             error: () => {
               this.route.navigate(['/'])

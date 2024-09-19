@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnDestroy, OnInit, Renderer2} from '@angular/core';
-import {SearchService} from "../../../services/search.service";
-import {ProductType} from "../../../types/product.type";
 import {Subscription} from "rxjs";
+import {ProductType} from "../../../../types/product.type";
+import {SearchService} from "../../services/search.service";
 
 @Component({
   selector: 'header-component',
@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.searchArr = this.filterProductSearch.filter(
       product => product?.title.toLowerCase().includes(str.toLowerCase())
     )
-    console.log(this.searchArr)
   }
 
   clearInputSearch(product?: ProductType) {

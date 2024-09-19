@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {OrderService} from "../../../services/order.service";
 import {OrderType} from "../../../types/order.type";
 import {Subscription} from "rxjs";
+import {OrderService} from "../../shared/services/order.service";
 
 @Component({
   selector: 'order-component',

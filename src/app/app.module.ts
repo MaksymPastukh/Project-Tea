@@ -2,41 +2,33 @@ import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/common/header/header.component';
-import { MainComponent } from './components/pages/main/main.component';
-import { OrderComponent } from './components/pages/order/order.component';
-import { FooterComponent } from './components/common/footer/footer.component';
-import { CatalogComponent } from './components/pages/catalog/catalog.component';
-import { ProductItemsComponent } from './components/component/product-items/product-items.component';
-import { ProductItemComponent } from './components/component/product-item/product-item.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { StringLimitPipe } from './pipes/string-limit.pipe';
 import localeRu from '@angular/common/locales/ru'
 import {registerLocaleData} from "@angular/common";
-import { FaqComponent } from './components/component/faq/faq.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {HeaderComponent} from "./shared/layout/header/header.component";
+import {FooterComponent} from "./shared/layout/footer/footer.component";
+import {LayoutComponent} from "./views/layout.component";
+import {SharedModule} from "./shared/shared.module";
 
 registerLocaleData(localeRu)
 
 @NgModule({
   declarations: [
-    AppComponent,
     HeaderComponent,
-    MainComponent,
-    OrderComponent,
     FooterComponent,
-    CatalogComponent,
-    ProductItemsComponent,
-    ProductItemComponent,
-    StringLimitPipe,
-    FaqComponent,
+    LayoutComponent,
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
+    SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [{
     provide: LOCALE_ID, useValue: 'ru'

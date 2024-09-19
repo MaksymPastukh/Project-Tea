@@ -3,7 +3,7 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {OrderService} from "../../../services/order.service";
 import {OrderType} from "../../../types/order.type";
-import {Subscription, tap} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'order-component',
@@ -11,9 +11,8 @@ import {Subscription, tap} from "rxjs";
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit, OnDestroy {
-  private subscription!: Subscription | null
-  private subscriptionOrder!: Subscription | null
-  public condition = false
+  private subscription: Subscription | null = null
+  private subscriptionOrder: Subscription | null = null
 
   constructor(private el: ElementRef, private activeRoute: ActivatedRoute, private route: Router, private fb: FormBuilder, private orderServices: OrderService) {
   }
@@ -42,47 +41,15 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   createOrder() {
-
-    if (!this.reactForm.get('name')?.value) {
-      alert('Введите имя!');
-      return;
-    }
-    if (!this.reactForm.get('last_name')?.value) {
-      alert('Введите фамилию!');
-      return;
-    }
-    if (!this.reactForm.get('phone')?.value) {
-      alert('Введите номер телефона!');
-      return;
-    }
-    if (!this.reactForm.get('country')?.value) {
-      alert('Введите страну!');
-      return;
-    }
-    if (!this.reactForm.get('zip')?.value) {
-      alert('Введите почтовый индекс!');
-      return;
-    }
-    if (!this.reactForm.get('address')?.value) {
-      alert('Введите адрес!');
+    if (this.reactForm.invalid) {
       return;
     }
 
-    if (!this.reactForm.valid) {
-      alert('Некоторые поля формы заполнены неправильно!');
-      return;
-    }
-    this.condition = true
     const elementFromHide = this.el.nativeElement.querySelector('.form-order')
     const elementFromShow = this.el.nativeElement.querySelector('.form-order-success')
     const submitError = this.el.nativeElement.querySelector('.submit-error')
 
     this.subscriptionOrder = this.orderServices.createOrderServices(this.reactForm.value)
-      .pipe(
-        tap(() => {
-          this.condition = false
-        })
-      )
       .subscribe({
         next: (response: OrderType) => {
           if (response.success && !response.message) {
